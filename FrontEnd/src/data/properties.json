@@ -1,66 +1,87 @@
 [
     {
       "Id": 1,
+      "Purpose": 1,
       "Type": "House",
       "Price": 12000,
-      "Name": "Thekkan House"
+      "Name": "Thekkan House",
+      "Image": "prop-1"
     },
     {
       "Id": 2,
+      "Purpose": 2,
       "Type": "Flat",
       "Price": 19000,
-      "Name": "Naiu House"
+      "Name": "Naiu House",
+      "Image": "prop-2"
     },
     {
       "Id": 3,
+      "Purpose": 1,
       "Type": "House",
       "Price": 12900,
-      "Name": "jyhut House"
+      "Name": "jyhut House",
+      "Image": "prop-3"
     },
     {
       "Id": 4,
+      "Purpose": 1,
       "Type": "House",
       "Price": 13000,
-      "Name": "Ertig House"
+      "Name": "Ertig House",
+      "Image": "prop-4"
     },
     {
       "Id": 5,
+      "Purpose": 2,
       "Type": "Apartment",
       "Price": 15000,
-      "Name": "hgih House"
+      "Name": "hgih House",
+      "Image": "prop-5"
     },
     {
       "Id": 6,
+      "Purpose": 2,
       "Type": "House",
       "Price": 17000,
-      "Name": "Dagarian House"
+      "Name": "Dagarian House",
+      "Image": "prop-6"
     },
     {
       "Id": 7,
+      "Purpose": 1,
       "Type": "House",
       "Price": 12000,
-      "Name": "Thor House"
+      "Name": "Thor House",
+      "Image": "prop-7"
     },
     {
       "Id": 8,
+      "Purpose": 2,
       "Type": "House",
       "Price": 32000,
-      "Name": "King House"
+      "Name": "King House",
+      "Image": "prop-8"
     },
     {
       "Id": 9,
+      "Purpose": 1,
       "Type": "Flat",
       "Price": 22000,
-      "Name": "Sikj House"
+      "Name": "Sikj House",
+      "Image": "prop-9"
     },
     {
       "Id": 10,
+      "Purpose": 1,
       "Type": "House",
       "Price": 34222,
-      "Name": "Karma House"
+      "Name": "Karma House",
+      "Image": "prop-10"
     },
     {
       "Id": 11,
+      "Purpose": 2,
       "Type": "House",
       "Price": 32333,
       "Name": "Edachira House"
