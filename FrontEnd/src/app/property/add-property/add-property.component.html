@@ -1,4 +1,27 @@
-<p>
-  add-property works!  
-  <button (click)="onHomePress()" class="btn btn-dark">Home</button>
-</p>
+<div class="card">
+  <div class="card-header">
+    <h5>Add New Property</h5>
+  </div>
+  <div class="card-body">
+    <form (ngSubmit)="onSubmit(Form)" #Form="ngForm">
+      <div class="form-group col-12 m-2 p-3">
+        <label for="name">Name:</label>
+        <input type="text" id="name" ngModel name="name" required class="form-control"> 
+      </div>
+      <div class="form-group col-12 m-2 p-3">
+        <label for="type">Type:</label>
+        <input type="text" id="type" ngModel name="Type" required class="form-control">
+      </div>
+      <div class="form-group col-12 m-2 p-3">
+        <label for="price">Price:</label>
+        <input type="number" id="price" ngModel name="Price" required class="form-control">
+      </div>
+
+      <div class="form-group col-12 p-3">
+        <button type="submit" class="btn btn-primary m-2">Save</button>
+        <button type="reset" class="btn btn-secondary">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
+
