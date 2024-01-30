@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, AbstractControlOptions, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
+import { User } from 'src/app/model/user';
+import { UserStorageService } from 'src/app/services/user-storage.service';
+import * as alertify from "alertifyjs";
 
 @Component({
   selector: 'app-user-register',
@@ -11,8 +14,9 @@ export class UserRegisterComponent implements OnInit {
   registrationForm!: FormGroup;
   /* If you're sure that the variable registrationForm will be assigned a value before it's used,
   you can use the definite assignment assertion (!) to tell TypeScript not to worry about the initialization.*/
-  user: any = {};
-  constructor(private fb: FormBuilder) { }
+  user: User = {} as User;
+  userSubmitted: boolean = false;
+  constructor(private fb: FormBuilder, private userService: UserStorageService) { }
 
   ngOnInit() {
     // this.registrationForm = new FormGroup({
@@ -62,41 +66,31 @@ export class UserRegisterComponent implements OnInit {
 
   onSubmit(){
     console.log(this.registrationForm.value);
-    this.user = Object.assign(this.user, this.registrationForm.value);
-    this.addUser(this.user);
-    this.registrationForm.reset();
-  }
-
-  addUser(user: any) {
-    let users: any[] = [];
-  
-    if (localStorage.getItem('Users')) {
-      const storedUsers = JSON.parse(localStorage.getItem('Users')!);
-      if (Array.isArray(storedUsers)) {
-        users = storedUsers;
-      }
+    this.userSubmitted = true;
+    if (this.registrationForm.valid){
+      // this.user = Object.assign(this.user, this.registrationForm.value);
+      this.userService.addUser(this.userData());
+      this.registrationForm.reset();
+      this.userSubmitted = false;
+      alertify.success("Congrats, Registration Completed")
     }
-  
-    users = [user, ...users];
-    localStorage.setItem('Users', JSON.stringify(users));
+    else{
+      alertify.error("Kindly complete the required fields")
+    }
   }
-  /* 1) localStorage: This is a web storage object in JavaScript that allows you to store key-value pairs locally in a user's web browser.
-  The data stored using localStorage persists even when the user closes their browser or navigates away from the page.
-  2) setItem('Users', JSON.stringify(users)): This line of code sets a key-value pair in the localStorage.
-  The key is a string, in this case, 'Users', and the value is the stringified JSON representation of the users object. */
-  
 
-  // addUser(user: any){
-  //   let users = [];
-  //   if(localStorage.getItem('Users')){
-  //     users = JSON.parse(localStorage.getItem('Users')!) || [];
-  //     users = [user, ...users];
-  //   }
-  //   else{
-  //     users = [user];
-  //   }
-  //   localStorage.setItem('Users', JSON.stringify(users));
-  // }
+  onCancel(){
+    this.userSubmitted = false;
+  }
+
+  userData(): User {
+    return this.user = {
+      userName: this.userName.value,
+      email: this.email.value,
+      password: this.password.value,      
+      mobile: this.mobile.value
+    }
+  }
 
   get userName(){
     return this.registrationForm.get('userName') as FormControl;
