@@ -1,3 +1,13 @@
-<p>
-  user-login works!
-</p>
+<div class="login-box">
+  <h2>Login</h2>
+  <form #loginForm='ngForm' (ngSubmit)="onLogin(loginForm)">
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" class="form-control" ngModel required>
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" class="form-control" ngModel required>
+
+      <button [disabled]="!loginForm.valid" type="submit">Login</button>
+      <button type="reset" class="cancel">Cancel</button>
+  </form>
+</div>

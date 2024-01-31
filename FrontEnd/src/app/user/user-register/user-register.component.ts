@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, AbstractControlOptions, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { User } from 'src/app/model/user';
 import { UserStorageService } from 'src/app/services/user-storage.service';
-import * as alertify from "alertifyjs";
+import { AlertifyService } from 'src/app/services/alertify.service';
 
 @Component({
   selector: 'app-user-register',
@@ -16,7 +16,7 @@ export class UserRegisterComponent implements OnInit {
   you can use the definite assignment assertion (!) to tell TypeScript not to worry about the initialization.*/
   user: User = {} as User;
   userSubmitted: boolean = false;
-  constructor(private fb: FormBuilder, private userService: UserStorageService) { }
+  constructor(private fb: FormBuilder, private userService: UserStorageService, private alertify: AlertifyService) { }
 
   ngOnInit() {
     // this.registrationForm = new FormGroup({
@@ -72,10 +72,10 @@ export class UserRegisterComponent implements OnInit {
       this.userService.addUser(this.userData());
       this.registrationForm.reset();
       this.userSubmitted = false;
-      alertify.success("Congrats, Registration Completed")
+      this.alertify.success("Congrats, Registration Completed")
     }
     else{
-      alertify.error("Kindly complete the required fields")
+      this.alertify.error("Kindly complete the required fields")
     }
   }
 
