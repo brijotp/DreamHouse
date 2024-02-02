@@ -2,6 +2,10 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TabsModule } from 'ngx-bootstrap/tabs'
+import { ButtonsModule } from 'ngx-bootstrap/buttons'
+// import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,6 +21,7 @@ import { UserRegisterComponent } from './user/user-register/user-register.compon
 import { UserStorageService } from './services/user-storage.service';
 import { AlertifyService } from './services/alertify.service';
 import { AuthService } from './services/auth.service';
+import { DropdownComponent } from './Components/dropdown/dropdown.component';
 
 const appRoutes: Routes = [
   { path: '', component: PropertyListComponent},  
@@ -37,7 +42,8 @@ const appRoutes: Routes = [
     AddPropertyComponent,
     PropertyDetailComponent,
     UserLoginComponent,
-    UserRegisterComponent
+    UserRegisterComponent,
+    DropdownComponent
    ],
   imports: [
     BrowserModule,
@@ -45,8 +51,12 @@ const appRoutes: Routes = [
     HttpClientModule,
     RouterModule.forRoot(appRoutes),
     FormsModule,
-    ReactiveFormsModule
-  ],
+    ReactiveFormsModule,
+    TabsModule.forRoot(),
+    ButtonsModule.forRoot()
+    // BrowserAnimationsModule,
+    // BsDropdownModule.forRoot()
+    ],
   providers: [
     HousingDataService,
     UserStorageService,
