@@ -14,6 +14,11 @@ export class AddPropertyComponent implements OnInit {
   you can use the definite assignment assertion (!) to tell TypeScript not to worry about the initialization.*/
   @ViewChild('formTabs') formTabs!: TabsetComponent;
 
+  propertyTypes: Array<string> = ['House', 'Apartment', 'Duplex']
+  furnishTypes: Array<string> = ['Fully', 'Semi', 'Unfurnished']
+  readyToMove: Array<string> = ['East', 'West', 'South', 'North']
+
+
   constructor(private router: Router) { }
 
   ngOnInit() {

@@ -14,8 +14,30 @@
                 <label class="btn btn-outline-primary" btnRadio=2 role="button" name="SellRent">Rent</label>
               </div>
             </div>
+
             <div class="form-group col-12 m-2 p-3">
-              <label for="name">Name:</label>
+              <p>BHK</p>
+              <div class="btn-group" btnRadioGroup>
+                <label *ngFor="let bhk of [1,2,3,4]" class="btn btn-outline-primary marginSell" [btnRadio]="bhk" role="button" name="SellRent">{{bhk}}</label>
+              </div>
+            </div>
+
+            <div class="form-group col-12 m-2 p-3">
+              <p>Property Type</p>
+              <div class="btn-group" btnRadioGroup>
+                <label *ngFor="let ptype of propertyTypes" class="btn btn-outline-primary marginSell" [btnRadio]="ptype" role="button" name="SellRent">{{ptype}}</label>
+              </div>
+            </div>
+
+            <div class="form-group col-12 m-2 p-3">
+              <p>Furnishing Type</p>
+              <div class="btn-group" btnRadioGroup>
+                <label *ngFor="let ftype of furnishTypes" class="btn btn-outline-primary marginSell" [btnRadio]="ftype" role="button" name="SellRent">{{ftype}}</label>
+              </div>
+            </div>
+
+            <div class="form-group col-12 m-2 p-3">
+              <label for="name">In Building/Society/Project</label>
               <input type="text" id="name" #propName="ngModel" ngModel name="name" required class="form-control"
                 minlength="5">
               <span *ngIf="!propName.valid && propName.touched" class="error-block">
@@ -27,12 +49,8 @@
               </span>
             </div>
             <div class="form-group col-12 m-2 p-3">
-              <label for="type">Type:</label>
-              <input type="text" id="type" ngModel name="Type" required class="form-control">
-            </div>
-            <div class="form-group col-12 m-2 p-3">
-              <label for="price">Price:</label>
-              <input type="number" id="price" ngModel name="Price" required class="form-control">
+              <label for="type">City</label>
+              <input type="text" id="type" required class="form-control">
             </div>
 
             <div class="form-group col-12 p-3">
@@ -101,12 +119,11 @@
           </tab>
           <tab heading="Other Details">
             <div class="form-group col-12 m-2 p-3">
-              <label>Ready to Move</label><br />
-              <input type="radio" id='Yes' value='1' name="RTM">
-              <label class="m-2">Yes</label>
-
-              <input type="radio" id="No" value='2' name="RTM">
-              <label class="m-2">No</label>
+              <p>Ready to Move</p>
+              <div class="btn-group" btnRadioGroup>
+                <label class="btn btn-outline-primary marginSell" btnRadio=1 role="button" name="move">Yes</label>
+                <label class="btn btn-outline-primary" btnRadio=2 role="button" name="move">No</label>
+              </div>
             </div>
 
             <div class="form-group col-3 m-2 p-3">
@@ -120,13 +137,18 @@
             </div>
 
             <div class="form-group col-12 m-2 p-3">
-              <label>Gated Community</label>
-              <input type="text" class="form-control">
+              <p>Gated Community</p>
+              <div class="btn-group" btnRadioGroup>
+                <label class="btn btn-outline-primary marginSell" btnRadio=1 role="button" name="Gated">Yes</label>
+                <label class="btn btn-outline-primary" btnRadio=2 role="button" name="Gated">No</label>
+              </div>
             </div>
 
             <div class="form-group col-12 m-2 p-3">
-              <label>Main Entrance</label>
-              <input type="text" class="form-control">
+              <p>Ready to Move</p>
+              <div class="btn-group" btnRadioGroup>
+                <label *ngFor="let direction of readyToMove" class="btn btn-outline-primary marginSell" [btnRadio]="direction" role="button" name="readyToMove">{{direction}}</label>
+              </div>
             </div>
 
             <div class="form-group col-12 m-2 p-3">
