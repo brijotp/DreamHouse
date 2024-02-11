@@ -28,7 +28,7 @@
 
                 <div class="form-group col-12 m-2 p-3">
                   <p>Property Type</p>
-                  <div class="btn-group" btnRadioGroup>
+                  <div class="btn-group" btnRadioGroup name='propType' [(ngModel)]="propertyView.Type">
                     <label *ngFor="let ptype of propertyTypes" class="btn btn-outline-primary marginSell"
                       [btnRadio]="ptype" role="button" name="SellRent">{{ptype}}</label>
                   </div>
@@ -66,17 +66,17 @@
               </tab>
               <tab heading="Pricing and Area">
                 <div class="form-group col-12 m-2 p-3">
-                  <label>Price (in USD)</label>
+                  <label>Price</label>
+                  <input type="text" class="form-control" name="price" [(ngModel)]="propertyView.Price">
+                </div>
+
+                <div class="form-group col-12 m-2 p-3">
+                  <label>Security</label>
                   <input type="text" class="form-control">
                 </div>
 
                 <div class="form-group col-12 m-2 p-3">
-                  <label>Security (in USD)</label>
-                  <input type="text" class="form-control">
-                </div>
-
-                <div class="form-group col-12 m-2 p-3">
-                  <label>Maintenance (in USD)</label>
+                  <label>Maintenance</label>
                   <input type="text" class="form-control">
                 </div>
 
@@ -194,10 +194,10 @@
     <div class="card">
       <div class="card-header">
         <h4>Peek Into Your Property</h4>
+      </div>
         <div>
           <app-property-card [property]="propertyView"></app-property-card>
-        </div>
-      </div>
+        </div>      
     </div>
   </div>
 </div>

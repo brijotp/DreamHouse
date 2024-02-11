@@ -2,9 +2,15 @@
     border-color: red;
 }
 
-.error-block{
+/* .error-block{
     color: red;
-}
+} */
+
+.error-block {
+    color: #dc3545; /* Red color for error messages */
+    font-size: 0.8rem; /* Reduce font size for error messages */
+    margin-top: 0.2rem; /* Add a small top margin for spacing */
+  }
 
 .btn-group > label[ng-reflect-btn-radio]{
     border-radius: 44px;

@@ -1,0 +1,75 @@
+body {
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Container styles */
+  .row {
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
+  }
+  
+  .col-6 {
+    width: 100%; /* Ensure the column takes up the entire width */
+    max-width: 400px; /* Limit the maximum width of the column */
+  }
+  
+  .card {
+    border: 1px solid #ccc; /* Add a subtle border */
+    border-radius: 10px; /* Add rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+  }
+  
+  .card-header {
+    background-color: #007bff; /* Blue color */
+    border-radius: 10px 10px 0 0; /* Round only the top corners */
+    color: #fff;
+    padding: 1rem;
+  }
+  
+  .card-body {
+    padding: 1rem;
+  }
+  
+  .form-group {
+    margin-bottom: 1rem; /* Add some bottom margin for spacing */
+  }
+  
+  .form-label {
+    font-weight: bold; /* Make form labels bold */
+  }
+  
+  .form-control {
+    border: 1px solid #ccc; /* Add a border to form inputs */
+    border-radius: 5px; /* Add some border radius */
+    padding: 0.5rem;
+    width: 100%; /* Ensure the input takes up the entire width */
+  }
+
+  
+  .btn {
+    border-radius: 5px; /* Add some border radius to buttons */
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+  }
+  
+  .btn-primary {
+    background-color: #007bff; /* Blue color */
+    border: none;
+    color: #fff;
+  }
+  
+  .btn-primary:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+  }
+  
+  .btn-secondary {
+    background-color: #6c757d; /* Gray color */
+    border: none;
+    color: #fff;
+  }
+  
+  .btn-secondary:hover {
+    background-color: #5a6268; /* Darker gray on hover */
+  }
+  
