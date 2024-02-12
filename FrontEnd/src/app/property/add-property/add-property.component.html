@@ -7,7 +7,7 @@
       <div class="card-body">
         <form (ngSubmit)="onSubmit()" #Form="ngForm">
           <div>
-            <tabset #formTabs>
+            <tabset class="member-tabset" #formTabs>
               <tab heading="Basic Info">
                 <div class="form-group col-12 m-2 p-3">
                   <p>I want to</p>
@@ -196,7 +196,7 @@
         <h4>Peek Into Your Property</h4>
       </div>
         <div>
-          <app-property-card [property]="propertyView"></app-property-card>
+          <app-property-card [property]="propertyView" [hideIcons]="true"></app-property-card>
         </div>      
     </div>
   </div>

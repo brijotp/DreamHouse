@@ -1,3 +1,4 @@
+
 .card-propImage{
     height: 250px;
     overflow: hidden;  
@@ -5,7 +6,9 @@
 
 .card-img-wrapper{
     overflow: hidden;
-    position: relative
+    position: relative;
+    display: flex;
+    justify-content: center;
 }
 
 .card:hover img{
