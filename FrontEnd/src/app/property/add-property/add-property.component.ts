@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TabsetComponent } from 'ngx-bootstrap/tabs/public_api';
-import { IProperty } from '../IProperty.interface';
+import { IProperty } from 'src/app/model/iproperty';
 
 @Component({
   selector: 'app-add-property',
@@ -20,14 +20,7 @@ export class AddPropertyComponent implements OnInit {
   readyToMove: Array<string> = ['East', 'West', 'South', 'North']
 
   propertyView: IProperty = {} as IProperty;
-  // propertyView: IProperty = {
-  //   Id: null,
-  //   Name: '',
-  //   Price: null,
-  //   Purpose: null,
-  //   Type: null
-  // };
-
+  
   constructor(private router: Router) { }
 
   ngOnInit() {

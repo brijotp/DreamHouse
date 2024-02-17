@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { catchError, throwError } from 'rxjs';
 import { HousingDataService } from 'src/app/services/housing-data.service';
-import { IProperty } from '../IProperty.interface';
 import { ActivatedRoute } from '@angular/router';
+import { IProperty } from 'src/app/model/iproperty';
 
 @Component({
   selector: 'app-property-list',

@@ -20,7 +20,7 @@
 
                 <div class="form-group col-12 m-2 p-3">
                   <p>BHK</p>
-                  <div class="btn-group" btnRadioGroup>
+                  <div class="btn-group" btnRadioGroup name='BHK' [(ngModel)]="propertyView.BHK">
                     <label *ngFor="let bhk of [1,2,3,4]" class="btn btn-outline-primary marginSell" [btnRadio]="bhk"
                       role="button" name="SellRent">{{bhk}}</label>
                   </div>
@@ -28,7 +28,7 @@
 
                 <div class="form-group col-12 m-2 p-3">
                   <p>Property Type</p>
-                  <div class="btn-group" btnRadioGroup name='propType' [(ngModel)]="propertyView.Type">
+                  <div class="btn-group" btnRadioGroup name='propType' [(ngModel)]="propertyView.PType">
                     <label *ngFor="let ptype of propertyTypes" class="btn btn-outline-primary marginSell"
                       [btnRadio]="ptype" role="button" name="SellRent">{{ptype}}</label>
                   </div>
@@ -36,7 +36,7 @@
 
                 <div class="form-group col-12 m-2 p-3">
                   <p>Furnishing Type</p>
-                  <div class="btn-group" btnRadioGroup>
+                  <div class="btn-group" btnRadioGroup name='FType' [(ngModel)]="propertyView.FType">
                     <label *ngFor="let ftype of furnishTypes" class="btn btn-outline-primary marginSell"
                       [btnRadio]="ftype" role="button" name="SellRent">{{ftype}}</label>
                   </div>
@@ -54,7 +54,7 @@
                     <span *ngIf="propName.errors?.['minlength']">Name must be atleast five char long</span>
                   </span>
                 </div>
-                <div class="form-group col-12 m-2 p-3">
+                <div class="form-group col-12 m-2 p-3" name='City' [(ngModel)]="propertyView.City">
                   <label for="type">City</label>
                   <input type="text" id="type" required class="form-control">
                 </div>
@@ -80,7 +80,7 @@
                   <input type="text" class="form-control">
                 </div>
 
-                <div class="form-group col-12 m-2 p-3">
+                <div class="form-group col-12 m-2 p-3" name='buildarea' [(ngModel)]="propertyView.BuildArea">
                   <label>Built Area (in Sqr Feet)</label>
                   <input type="text" class="form-control">
                 </div>
@@ -132,9 +132,9 @@
                   </div>
                 </div>
 
-                <div class="form-group col-3 m-2 p-3">
-                  <label>Possession/Avaialble From</label>
-                  <input type="date" class="form-control">
+                <div class="form-group col-12 m-2 p-3">
+                  <label for="possession_date">Possession/Avaialble From</label>
+                  <input type="date" id="possession_date" class="form-control">
                 </div>
 
                 <div class="form-group col-12 m-2 p-3">
