@@ -1,3 +1,4 @@
+<!-- Template Driven Form Used -->
 <div class="row mb-5">
   <div class="col-8">
     <div class="card">
@@ -8,13 +9,13 @@
         <form (ngSubmit)="onSubmit()" #Form="ngForm">
           <div>
             <tabset class="member-tabset" #formTabs>
-              <tab heading="Basic Info">
+              <tab heading="Basic Info" ngModelGroup="BasicInfo" #BasicInfo="ngModelGroup">
                 <div class="form-group col-12 m-2 p-3">
                   <p>I want to</p>
-                  <div class="btn-group" btnRadioGroup>
+                  <div class="btn-group" btnRadioGroup ngModel name="SellRent" required>
                     <label class="btn btn-outline-primary marginSell" btnRadio=1 role="button"
-                      name="SellRent">Sell</label>
-                    <label class="btn btn-outline-primary" btnRadio=2 role="button" name="SellRent">Rent</label>
+                      >Sell</label>
+                    <label class="btn btn-outline-primary" btnRadio=2 role="button">Rent</label>
                   </div>
                 </div>
 
@@ -22,7 +23,7 @@
                   <p>BHK</p>
                   <div class="btn-group" btnRadioGroup name='BHK' [(ngModel)]="propertyView.BHK">
                     <label *ngFor="let bhk of [1,2,3,4]" class="btn btn-outline-primary marginSell" [btnRadio]="bhk"
-                      role="button" name="SellRent">{{bhk}}</label>
+                      role="button">{{bhk}}</label>
                   </div>
                 </div>
 
@@ -30,7 +31,7 @@
                   <p>Property Type</p>
                   <div class="btn-group" btnRadioGroup name='propType' [(ngModel)]="propertyView.PType">
                     <label *ngFor="let ptype of propertyTypes" class="btn btn-outline-primary marginSell"
-                      [btnRadio]="ptype" role="button" name="SellRent">{{ptype}}</label>
+                      [btnRadio]="ptype" role="button">{{ptype}}</label>
                   </div>
                 </div>
 
@@ -38,7 +39,7 @@
                   <p>Furnishing Type</p>
                   <div class="btn-group" btnRadioGroup name='FType' [(ngModel)]="propertyView.FType">
                     <label *ngFor="let ftype of furnishTypes" class="btn btn-outline-primary marginSell"
-                      [btnRadio]="ftype" role="button" name="SellRent">{{ftype}}</label>
+                      [btnRadio]="ftype" role="button">{{ftype}}</label>
                   </div>
                 </div>
 
@@ -54,14 +55,15 @@
                     <span *ngIf="propName.errors?.['minlength']">Name must be atleast five char long</span>
                   </span>
                 </div>
-                <div class="form-group col-12 m-2 p-3" name='City' [(ngModel)]="propertyView.City">
-                  <label for="type">City</label>
-                  <input type="text" id="type" required class="form-control">
+                <div class="form-group col-12 m-2 p-3">
+                  <label>City</label> 
+                  <!-- check what is this name used for y there are many sell rent -->
+                  <input name='City' [(ngModel)]="propertyView.City" type="text" required class="form-control">
                 </div>
 
                 <div class="form-group col-12 p-3">
                   <!-- <button [disabled]="!Form.valid" type="submit" class="btn btn-primary m-2">Save</button> -->
-                  <button type="button" class="btn btn-primary btn-block" (click)="selectTab(1)">Next</button>
+                  <button type="button" class="btn btn-primary btn-block" (click)="selectTab(1)" [disabled]="!BasicInfo.valid">Next</button>
                 </div>
               </tab>
               <tab heading="Pricing and Area">
@@ -80,9 +82,9 @@
                   <input type="text" class="form-control">
                 </div>
 
-                <div class="form-group col-12 m-2 p-3" name='buildarea' [(ngModel)]="propertyView.BuildArea">
+                <div class="form-group col-12 m-2 p-3">
                   <label>Built Area (in Sqr Feet)</label>
-                  <input type="text" class="form-control">
+                  <input type="text" class="form-control" name="BuildArea" [(ngModel)]="propertyView.BuildArea">
                 </div>
 
                 <div class="form-group col-12 m-2 p-3">
@@ -127,8 +129,8 @@
                 <div class="form-group col-12 m-2 p-3">
                   <p>Ready to Move</p>
                   <div class="btn-group" btnRadioGroup>
-                    <label class="btn btn-outline-primary marginSell" btnRadio=1 role="button" name="move">Yes</label>
-                    <label class="btn btn-outline-primary" btnRadio=2 role="button" name="move">No</label>
+                    <label class="btn btn-outline-primary marginSell" btnRadio=1 role="button" >Yes</label>
+                    <label class="btn btn-outline-primary" btnRadio=2 role="button">No</label>
                   </div>
                 </div>
 
@@ -145,8 +147,8 @@
                 <div class="form-group col-12 m-2 p-3">
                   <p>Gated Community</p>
                   <div class="btn-group" btnRadioGroup>
-                    <label class="btn btn-outline-primary marginSell" btnRadio=1 role="button" name="Gated">Yes</label>
-                    <label class="btn btn-outline-primary" btnRadio=2 role="button" name="Gated">No</label>
+                    <label class="btn btn-outline-primary marginSell" btnRadio=1 role="button">Yes</label>
+                    <label class="btn btn-outline-primary" btnRadio=2 role="button">No</label>
                   </div>
                 </div>
 
@@ -154,7 +156,7 @@
                   <p>Ready to Move</p>
                   <div class="btn-group" btnRadioGroup>
                     <label *ngFor="let direction of readyToMove" class="btn btn-outline-primary marginSell"
-                      [btnRadio]="direction" role="button" name="readyToMove">{{direction}}</label>
+                      [btnRadio]="direction" role="button">{{direction}}</label>
                   </div>
                 </div>
 

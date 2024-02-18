@@ -11,21 +11,21 @@
       </li>
     </ul>
   </div>
-  <!-- <div class="card-body p-1">
-    <h1 class="mb-0" *ngIf="bhkValue"> {{bhkValue}} BHK {{propertyType}}</h1>
-
-    <span *ngIf="propertyName">in {{propertyName}},</span>
+  <div class="card-body p-1">
+    <h2 class="mb-0" *ngIf="property.BHK"> {{property.BHK}} BHK </h2>
+    {{property.PType}}
+    <span *ngIf="property.Name">in {{property.Name}},</span>
     {{property.City}}
 
-    <h6 *ngIf="furnitureType" class="mt-2">{{property.FType}}
-    <span *ngIf="furnitureType !== 'Unfurnished'">Furnished | Ready to Move</span></h6>    
+    <h6 *ngIf="property.FType" class="mt-2">{{property.FType}}
+    <span *ngIf="property.FType !== 'Unfurnished'">Furnished | Ready to Move</span></h6>    
 
-    <h6 *ngIf="propertyPrice" class="mb-0"><hr class="mt-0 mb-2">
-      Price: <span class="text-primary">{{propertyPrice}} INR.</span> |
+    <h6 *ngIf="property.Price" class="mb-0"><hr class="mt-0 mb-2">
+      Price: <span class="text-primary">{{property.Price}} INR.</span> |
       Area:  <span>{{property.BuildArea}} Sq Ft </span> </h6>
-  </div> -->
+  </div>
 
-  <div class="card-body p-1">
+  <!-- <div class="card-body p-1">
     <h1 class="mb-0"> {{property.BHK}} BHK {{property.PType}} </h1>
 
     in {{property.Name}}
@@ -39,6 +39,6 @@
 
     <h6 class="mb-0">Price: <span class>{{property.Price}} USD.</span> |
       Area:  <span>{{property.BuildArea}} Sq Ft </span> </h6>
-  </div>
+  </div> -->
 
 </div>
