@@ -4,6 +4,11 @@
     border-radius: 8px; /* Adds rounded corners to the image */
 }
 
+.card-body h2 {
+    font-family: fantasy;
+    color: #0069d9;
+}
+
 .card-img-wrapper{
     overflow: hidden;
     position: relative;
