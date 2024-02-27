@@ -4,7 +4,8 @@
     <img *ngIf="!property.Image" class="card-propImage" src="assets/images/default-house.jpg" />
     <ul *ngIf="!hideIcons" class="list-inline text-center member-icons animate">
       <li class="list-inline-item">
-        <button class="btn btn-outline-light" routerLink="/property-detail/{{property.Id}}"><i class="fa-solid fa-pen-to-square"></i></button>
+        <button class="btn btn-outline-light" routerLink="/property-detail/{{property.Id}}"><i
+            class="fa-solid fa-pen-to-square"></i></button>
       </li>
       <li class="list-inline-item">
         <button class="btn btn-outline-light"><i class="fa-solid fa-address-book"></i></button>
@@ -18,11 +19,16 @@
     {{property.City}}
 
     <h6 *ngIf="property.FType" class="mt-2">{{property.FType}}
-    <span *ngIf="property.FType !== 'Unfurnished'">Furnished | Ready to Move</span></h6>    
+      <span *ngIf="property.FType !== 'Unfurnished'">Furnished
+        <span *ngIf="property.RTM == 0"> | Ready to Move</span>
+      </span>
+    </h6>
 
-    <h6 *ngIf="property.Price" class="mb-0"><hr class="mt-0 mb-2">
+    <h6 *ngIf="property.Price" class="mb-0">
+      <hr class="mt-0 mb-2">
       Price: <span class="text-primary">{{property.Price}} INR.</span> |
-      Area:  <span>{{property.BuildArea}} Sq Ft </span> </h6>
+      Area: <span>{{property.BuildArea}} Sq Ft </span>
+    </h6>
   </div>
 
   <!-- <div class="card-body p-1">
