@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { NgForm, FormsModule, FormGroup, FormBuilder, Validators  } from '@angular/forms';
+import { NgForm, FormsModule, FormGroup, FormBuilder, Validators, FormControl  } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TabsetComponent } from 'ngx-bootstrap/tabs/public_api';
 import { IProperty } from 'src/app/model/iproperty';
@@ -17,6 +17,7 @@ export class AddPropertyComponent implements OnInit {
   @ViewChild('formTabs') formTabs!: TabsetComponent;
 
   addPropertyForm!: FormGroup;
+  nextClicked!: boolean;
 
   propertyTypes: Array<string> = ['House', 'Apartment', 'Duplex'];
   furnishTypes: Array<string> = ['Fully', 'Semi', 'Unfurnished'];
@@ -85,6 +86,10 @@ export class AddPropertyComponent implements OnInit {
     return this.addPropertyForm.controls['BasicInfo'] as FormGroup;
   }
 
+  get Purpose(){
+    return this.BasicInfo.controls['Purpose'] as FormControl;
+  }
+
   // Method to map form values to propertyView object
   mapFormValuesToPropertyView(form: FormGroup): void {
     // Retrieve form values
@@ -116,8 +121,9 @@ export class AddPropertyComponent implements OnInit {
     console.log(this.addPropertyForm);
   }
 
-  selectTab(tabId: number) {
-    if (this.formTabs?.tabs[tabId]) {
+  selectTab(tabId: number, IsCurrentTabValid: boolean) {
+    this.nextClicked = true;
+    if (IsCurrentTabValid) {
       this.formTabs.tabs[tabId].active = true;
     }
   }

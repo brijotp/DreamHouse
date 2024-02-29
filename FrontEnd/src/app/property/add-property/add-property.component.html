@@ -17,6 +17,9 @@
                       >Sell</label>
                     <label class="btn btn-outline-primary" btnRadio=2 role="button">Rent</label>
                   </div>
+                  <div class="error-block" *ngIf="Purpose.invalid && nextClicked">
+                    Please select sell or rent
+                  </div>
                 </div>
 
                 <div class="form-group col-12 m-2 p-3">
@@ -63,7 +66,7 @@
 
                 <div class="form-group col-12 p-3">
                   <!-- <button [disabled]="!Form.valid" type="submit" class="btn btn-primary m-2">Save</button> -->
-                  <button type="button" class="btn btn-primary btn-block" (click)="selectTab(1)">Next</button>
+                  <button type="button" class="btn btn-primary btn-block" (click)="selectTab(1, BasicInfo.valid)">Next</button>
                 </div>
               </tab>
               <tab heading="Pricing and Area" formGroupName="PriceInfo">
@@ -93,9 +96,9 @@
                 </div>
 
                 <div class="form-group col-12 m-2 p-3">
-                  <button type="button" class="btn btn-primary btn-block" (click)="selectTab(2)">Next</button>
+                  <button type="button" class="btn btn-primary btn-block" (click)="selectTab(2, BasicInfo.valid)">Next</button>
 
-                  <button type="button" class="btn btn-primary btn-block" (click)="selectTab(0)">Back</button>
+                  <button type="button" class="btn btn-primary btn-block" (click)="selectTab(0, BasicInfo.valid)">Back</button>
                 </div>
               </tab>
               <tab heading="Address" formGroupName="AddressInfo">
@@ -120,9 +123,9 @@
                 </div>
 
                 <div class="form-group col-12 m-2 p-3">
-                  <button type="button" class="btn btn-primary btn-block" (click)="selectTab(3)">Next</button>
+                  <button type="button" class="btn btn-primary btn-block" (click)="selectTab(3, BasicInfo.valid)">Next</button>
 
-                  <button type="button" class="btn btn-primary btn-block" (click)="selectTab(1)">Back</button>
+                  <button type="button" class="btn btn-primary btn-block" (click)="selectTab(1, BasicInfo.valid)">Back</button>
                 </div>
               </tab>
               <tab heading="Other Details" formGroupName="OtherInfo">
@@ -166,9 +169,9 @@
                 </div>
 
                 <div class="form-group col-12 m-2 p-3">
-                  <button type="button" class="btn btn-primary btn-block" (click)="selectTab(4)">Next</button>
+                  <button type="button" class="btn btn-primary btn-block" (click)="selectTab(4, BasicInfo.valid)">Next</button>
 
-                  <button type="button" class="btn btn-primary btn-block" (click)="selectTab(2)">Back</button>
+                  <button type="button" class="btn btn-primary btn-block" (click)="selectTab(2, BasicInfo.valid)">Back</button>
                 </div>
               </tab>
               <tab heading="Photos">
@@ -179,7 +182,7 @@
                   </div>
                 </div>
                 <div class="form-group col-12 m-2 p-3">
-                  <button type="button" class="btn btn-primary btn-block" (click)="selectTab(3)">Back</button>
+                  <button type="button" class="btn btn-primary btn-block" (click)="selectTab(3, BasicInfo.valid)">Back</button>
                   <button type="reset" class="btn btn-primary btn-block">Cancel</button>
                   <button type="submit" class="btn btn-primary btn-block">Save</button>
                 </div>
