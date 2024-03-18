@@ -90,6 +90,14 @@ export class AddPropertyComponent implements OnInit {
     return this.BasicInfo.controls['Purpose'] as FormControl;
   }
 
+  get PriceInfo() {
+    return this.addPropertyForm.controls['PriceInfo'] as FormGroup;
+  }
+
+  get Price() {
+    return this.PriceInfo.controls['Price'] as FormControl;
+  }
+
   
   mapFormValuesToPropertyView(form: FormGroup): void {
     
