@@ -90,12 +90,12 @@ export class AddPropertyComponent implements OnInit {
     return this.BasicInfo.controls['Purpose'] as FormControl;
   }
 
-  // Method to map form values to propertyView object
+  
   mapFormValuesToPropertyView(form: FormGroup): void {
-    // Retrieve form values
+    
     const formValues = form.value;
 
-    // Map BasicInfo
+    
     this.propertyView.Purpose = formValues.BasicInfo.Purpose;
     this.propertyView.BHK = formValues.BasicInfo.BHK;
     this.propertyView.PType = formValues.BasicInfo.PType;
@@ -103,11 +103,11 @@ export class AddPropertyComponent implements OnInit {
     this.propertyView.Name = formValues.BasicInfo.Name;
     this.propertyView.City = formValues.BasicInfo.City;
 
-    // Map PriceInfo
+    
     this.propertyView.Price = formValues.PriceInfo.Price;
     this.propertyView.BuildArea = formValues.PriceInfo.BuildArea;
 
-    // You can continue mapping other sections similarly
+    
     this.propertyView.RTM = formValues.OtherInfo.RTM;
   }
 
