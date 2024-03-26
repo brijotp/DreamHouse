@@ -1,4 +1,4 @@
-.login-box {
+/* .login-box {
     width: 300px;
     margin: 0 auto;
     padding: 20px;
@@ -26,4 +26,94 @@ button {
 
 button.cancel {
     background-color: #ccc;
-}
+} */
+
+
+
+
+/* Define keyframes for fade-in animation */
+@keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  /* Apply animation to login box */
+  .login-box {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.5s ease; /* Apply fade-in animation */
+  }
+  
+  /* Other styles remain the same */
+  .login-box h2 {
+    color: #007bff;
+    text-align: center;
+  }
+  
+  .login-box form {
+    margin-top: 20px;
+  }
+  
+  .login-box label {
+    font-weight: bold;
+  }
+  
+  .login-box .form-control {
+    border: 1px solid #007bff;
+    border-radius: 5px;
+    padding: 10px;
+    width: 100%;
+  }
+  
+  .login-box button[type="submit"],
+  .login-box button.cancel {
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 10px 20px;
+    width: 48%;
+    margin-top: 10px;
+  }
+  
+  .login-box button[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+  .login-box button[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+  
+  .login-box button.cancel {
+    background-color: #6c757d;
+    color: #fff;
+    margin-left: 4%;
+  }
+  
+  .login-box button.cancel:hover {
+    background-color: #5a6268;
+  }
+  
+  
+
+  .home-image {
+    width: 100%; /* Adjust width as needed */
+    text-align: center; /* Center the image */
+  }
+  
+  .home-image img {
+    max-width: 50%; /* Ensure the image doesn't exceed its container */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 10px; /* Add rounded corners for a nicer look */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+  }
+  
+  

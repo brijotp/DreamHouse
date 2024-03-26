@@ -125,6 +125,16 @@ export class AddPropertyComponent implements OnInit {
   // }
 
   onSubmit() {
+    this.nextClicked = true;
+    if(this.BasicInfo.invalid){
+      this.formTabs.tabs[0].active = true;
+      return;
+    }
+
+    if(this.PriceInfo.invalid){
+      this.formTabs.tabs[1].active = true;
+      return;
+    }
     console.log('congrats form submitted');
     console.log(this.addPropertyForm);
   }

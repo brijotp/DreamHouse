@@ -43,11 +43,11 @@ export class UserRegisterComponent implements OnInit {
 
   createRegistrationForm() {
     const controls = {
-      userName: ['Your Name', Validators.required],
-      email: ['abc@gmail.com', [Validators.required, Validators.email]],
+      userName: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
       password: [null, [Validators.required, Validators.minLength(8)]],
       confirmPassword: [null, [Validators.required]],
-      mobile: ['1111111111', [Validators.required, Validators.maxLength(10)]]
+      mobile: ['', [Validators.required, Validators.maxLength(10)]]
     };
     const options: AbstractControlOptions = {
       validators: this.passwordMatchingValidator

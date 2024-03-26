@@ -71,8 +71,12 @@
               </tab>
               <tab heading="Pricing and Area" formGroupName="PriceInfo">
                 <div class="form-group col-12 m-2 p-3">
-                  <label>Price</label>
+                  <label *ngIf="Purpose.value == 1">Price</label>
+                  <label *ngIf="Purpose.value == 2">Rent</label>
                   <input type="text" class="form-control" formControlName="Price">
+                  <div class="error-block" *ngIf="Price.invalid && (nextClicked || Price.touched)">
+                    Please select price
+                  </div>
                 </div>
 
                 <div class="form-group col-12 m-2 p-3">
