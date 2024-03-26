@@ -3,6 +3,8 @@ import { NgForm, FormsModule, FormGroup, FormBuilder, Validators, FormControl  }
 import { Router } from '@angular/router';
 import { TabsetComponent } from 'ngx-bootstrap/tabs/public_api';
 import { IProperty } from 'src/app/model/iproperty';
+import { Property } from 'src/app/model/property';
+import { HousingDataService } from 'src/app/services/housing-data.service';
 
 
 @Component({
@@ -18,6 +20,7 @@ export class AddPropertyComponent implements OnInit {
 
   addPropertyForm!: FormGroup;
   nextClicked!: boolean;
+  property = new Property();
 
   propertyTypes: Array<string> = ['House', 'Apartment', 'Duplex'];
   furnishTypes: Array<string> = ['Fully', 'Semi', 'Unfurnished'];
@@ -36,7 +39,7 @@ export class AddPropertyComponent implements OnInit {
     RTM: 0,
   };
 
-  constructor(private fb: FormBuilder, private router: Router) {}
+  constructor(private fb: FormBuilder, private router: Router, private housingService: HousingDataService) {}
 
   ngOnInit() {
     this.CreateAddPropertyForm();
@@ -82,27 +85,117 @@ export class AddPropertyComponent implements OnInit {
     });
   }
 
-  get BasicInfo(){
+//#region <Getter Methods>
+  // #region <FormGroups>
+  get BasicInfo() {
     return this.addPropertyForm.controls['BasicInfo'] as FormGroup;
-  }
-
-  get Purpose(){
-    return this.BasicInfo.controls['Purpose'] as FormControl;
   }
 
   get PriceInfo() {
     return this.addPropertyForm.controls['PriceInfo'] as FormGroup;
   }
 
+  get AddressInfo() {
+    return this.addPropertyForm.controls['AddressInfo'] as FormGroup;
+  }
+
+  get OtherInfo() {
+    return this.addPropertyForm.controls['OtherInfo'] as FormGroup;
+  }
+// #endregion
+
+//#region <Form Controls>
+  get Purpose() {
+    return this.BasicInfo.controls['Purpose'] as FormControl;
+  }
+
+  get BHK() {
+    return this.BasicInfo.controls['BHK'] as FormControl;
+  }
+
+  get PType() {
+    return this.BasicInfo.controls['PType'] as FormControl;
+  }
+
+  get FType() {
+    return this.BasicInfo.controls['FType'] as FormControl;
+  }
+
+  get Name() {
+    return this.BasicInfo.controls['Name'] as FormControl;
+  }
+
+  get City() {
+    return this.BasicInfo.controls['City'] as FormControl;
+  }
+
   get Price() {
     return this.PriceInfo.controls['Price'] as FormControl;
   }
+
+  get BuildArea() {
+    return this.PriceInfo.controls['BuildArea'] as FormControl;
+  }
+
+  get CarpetArea() {
+    return this.PriceInfo.controls['CarpetArea'] as FormControl;
+  }
+
+  get Security() {
+    return this.PriceInfo.controls['Security'] as FormControl;
+  }
+
+  get Maintenance() {
+    return this.PriceInfo.controls['Maintenance'] as FormControl;
+  }
+
+  get FloorNo() {
+    return this.AddressInfo.controls['FloorNo'] as FormControl;
+  }
+
+  get TotalFloor() {
+    return this.AddressInfo.controls['TotalFloor'] as FormControl;
+  }
+
+  get Address() {
+    return this.AddressInfo.controls['Address'] as FormControl;
+  }
+
+  get LandMark() {
+    return this.AddressInfo.controls['LandMark'] as FormControl;
+  }
+
+  get RTM() {
+    return this.OtherInfo.controls['RTM'] as FormControl;
+  }
+
+  get PossessionOn() {
+    return this.OtherInfo.controls['PossessionOn'] as FormControl;
+  }
+
+  get AOP() {
+    return this.OtherInfo.controls['AOP'] as FormControl;
+  }
+
+  get Gated() {
+    return this.OtherInfo.controls['Gated'] as FormControl;
+  }
+
+  get MainEntrance() {
+    return this.OtherInfo.controls['MainEntrance'] as FormControl;
+  }
+
+  get Description() {
+    return this.OtherInfo.controls['Description'] as FormControl;
+  }
+
+//#endregion
+//#endregion
 
   
   mapFormValuesToPropertyView(form: FormGroup): void {
     
     const formValues = form.value;
-
     
     this.propertyView.Purpose = formValues.BasicInfo.Purpose;
     this.propertyView.BHK = formValues.BasicInfo.BHK;
@@ -110,11 +203,9 @@ export class AddPropertyComponent implements OnInit {
     this.propertyView.FType = formValues.BasicInfo.FType;
     this.propertyView.Name = formValues.BasicInfo.Name;
     this.propertyView.City = formValues.BasicInfo.City;
-
     
     this.propertyView.Price = formValues.PriceInfo.Price;
     this.propertyView.BuildArea = formValues.PriceInfo.BuildArea;
-
     
     this.propertyView.RTM = formValues.OtherInfo.RTM;
   }
@@ -126,18 +217,62 @@ export class AddPropertyComponent implements OnInit {
 
   onSubmit() {
     this.nextClicked = true;
-    if(this.BasicInfo.invalid){
+    if (this.allTabsValid()) {
+      this.mapProperty();
+      this.housingService.addProperty(this.property);
+      console.log('congrats form submitted');
+      console.log(this.addPropertyForm);
+    }
+  }
+
+  mapProperty(): void {
+    this.property.Purpose = +this.Purpose.value;
+    this.property.BHK = this.BHK.value;
+    this.property.PType = this.PType.value;
+    this.property.Name = this.Name.value;
+    this.property.City = this.City.value;
+    this.property.FType = this.FType.value;
+    this.property.Price = this.Price.value;
+    this.property.Security = this.Security.value;
+    this.property.Maintenance = this.Maintenance.value;
+    this.property.BuildArea = this.BuildArea.value;
+    this.property.CarpetArea = this.CarpetArea.value;
+    this.property.FloorNo = this.FloorNo.value;
+    this.property.TotalFloor = this.TotalFloor.value;
+    this.property.Address = this.Address.value;
+    this.property.Address2 = this.LandMark.value;
+    this.property.RTM = this.RTM.value;
+    this.property.AOP = this.AOP.value;
+    this.property.Gated = this.Gated.value;
+    this.property.MainEntrance = this.MainEntrance.value;
+    this.property.Possession = this.PossessionOn.value;
+    this.property.Description = this.Description.value;
+    this.property.PostedOn = new Date().toString();
+  }
+
+  allTabsValid(): boolean {
+    if (this.BasicInfo.invalid) {
       this.formTabs.tabs[0].active = true;
-      return;
+      return false;
     }
 
-    if(this.PriceInfo.invalid){
+    if (this.PriceInfo.invalid) {
       this.formTabs.tabs[1].active = true;
-      return;
+      return false;
     }
-    console.log('congrats form submitted');
-    console.log(this.addPropertyForm);
+
+    if (this.AddressInfo.invalid) {
+      this.formTabs.tabs[2].active = true;
+      return false;
+    }
+
+    if (this.OtherInfo.invalid) {
+      this.formTabs.tabs[3].active = true;
+      return false;
+    }
+    return true;
   }
+
 
   selectTab(tabId: number, IsCurrentTabValid: boolean) {
     this.nextClicked = true;
