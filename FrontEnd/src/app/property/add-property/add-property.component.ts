@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { TabsetComponent } from 'ngx-bootstrap/tabs/public_api';
 import { IProperty } from 'src/app/model/iproperty';
 import { Property } from 'src/app/model/property';
+import { AlertifyService } from 'src/app/services/alertify.service';
 import { HousingDataService } from 'src/app/services/housing-data.service';
 
 
@@ -39,7 +40,7 @@ export class AddPropertyComponent implements OnInit {
     RTM: 0,
   };
 
-  constructor(private fb: FormBuilder, private router: Router, private housingService: HousingDataService) {}
+  constructor(private fb: FormBuilder, private router: Router, private housingService: HousingDataService, private alertify: AlertifyService) {}
 
   ngOnInit() {
     this.CreateAddPropertyForm();
@@ -220,8 +221,16 @@ export class AddPropertyComponent implements OnInit {
     if (this.allTabsValid()) {
       this.mapProperty();
       this.housingService.addProperty(this.property);
-      console.log('congrats form submitted');
+      this.alertify.success('congrats form submitted');
       console.log(this.addPropertyForm);
+      if(this.Purpose.value == '2'){
+        this.router.navigate(['/rent-property']);
+      }else{
+        this.router.navigate(['/']);
+      }
+
+    }else{
+      this.alertify.error('Provide all valid entries')
     }
   }
 

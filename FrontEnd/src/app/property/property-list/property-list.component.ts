@@ -25,6 +25,11 @@ export class PropertyListComponent implements OnInit {
     ).subscribe((data) => {
       console.log(data);
       this.properties = data;
+      const newProperty = JSON.parse(localStorage.getItem('newProp')!);
+
+      if(newProperty.Purpose === this.purposeParam){
+        this.properties = [newProperty, ...this.properties]
+      }
       // console.log(this.route.snapshot.url.toString());
     });
   }
