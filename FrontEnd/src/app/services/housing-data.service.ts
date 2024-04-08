@@ -42,4 +42,16 @@ export class HousingDataService {
   addProperty(property: Property){
     localStorage.setItem('newProp', JSON.stringify(property))
   }
+
+  newPropID(): number {
+    if(localStorage.getItem('PID')){
+      let newId = +localStorage.getItem('PID')! + 1;
+      localStorage.setItem('PID', String(newId));
+      return newId;
+    }
+    else{
+      localStorage.setItem('PID','101');
+      return 101;
+    }
+  }
 }
