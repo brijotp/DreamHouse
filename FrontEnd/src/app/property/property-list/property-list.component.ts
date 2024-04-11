@@ -3,6 +3,7 @@ import { catchError, throwError } from 'rxjs';
 import { HousingDataService } from 'src/app/services/housing-data.service';
 import { ActivatedRoute } from '@angular/router';
 import { IProperty } from 'src/app/model/iproperty';
+import { Property } from 'src/app/model/property';
 
 @Component({
   selector: 'app-property-list',
@@ -11,7 +12,7 @@ import { IProperty } from 'src/app/model/iproperty';
 })
 export class PropertyListComponent implements OnInit {
   purposeParam = 1;
-  properties: Array<IProperty> = [];
+  properties: IProperty[] = [];
   constructor(private route:ActivatedRoute, private housingDataService: HousingDataService) {}
   ngOnInit(): void {
     if(this.route.snapshot.url.toString()) {
@@ -25,11 +26,14 @@ export class PropertyListComponent implements OnInit {
     ).subscribe((data) => {
       console.log(data);
       this.properties = data;
-      const newProperty = JSON.parse(localStorage.getItem('newProp')!);
 
-      if(newProperty.Purpose === this.purposeParam){
-        this.properties = [newProperty, ...this.properties]
+      let newProperty: IProperty[] = JSON.parse(localStorage.getItem('newProp')!);
+
+      for(let prop of newProperty){
+      if(prop.Purpose === this.purposeParam){
+        this.properties = [prop, ...this.properties]
       }
+    }
       // console.log(this.route.snapshot.url.toString());
     });
   }

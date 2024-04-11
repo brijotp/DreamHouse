@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
 import { IProperty } from '../model/iproperty';
 import { Property } from '../model/property';
+import { User } from '../model/user';
 
 @Injectable({
   providedIn: 'root',
@@ -40,8 +41,34 @@ export class HousingDataService {
   }
 
   addProperty(property: Property){
-    localStorage.setItem('newProp', JSON.stringify(property))
+    let properties: Property[] = [];
+
+    const storedPropertiesString = localStorage.getItem('newProp');
+    if(storedPropertiesString){
+      const storedProperties = JSON.parse(storedPropertiesString) as Property;
+      if(Array.isArray(storedProperties)){
+        properties = storedProperties;
+      }
+    }
+
+    properties = [property, ...properties];
+    localStorage.setItem('newProp', JSON.stringify(properties))
   }
+
+  // addUser(user: User) {
+  //   let users: User[] = [];
+  
+  //   const storedUsersString  = localStorage.getItem('Users');
+  //   if (storedUsersString) { 
+  //     const storedUsers = JSON.parse(storedUsersString) as User;   
+  //     if (Array.isArray(storedUsers)) {
+  //       users = storedUsers;
+  //     }
+  //   }
+  
+  //   users = [user, ...users];
+  //   localStorage.setItem('Users', JSON.stringify(users));
+  // }
 
   newPropID(): number {
     if(localStorage.getItem('PID')){
