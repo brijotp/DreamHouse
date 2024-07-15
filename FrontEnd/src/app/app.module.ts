@@ -13,7 +13,7 @@ import { AppComponent } from './app.component';
 import { PropertyCardComponent } from './property/property-card/property-card.component';
 import { PropertyListComponent } from './property/property-list/property-list.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { HousingDataService } from './services/housing-data.service';
 import { AddPropertyComponent } from './property/add-property/add-property.component';
 import { PropertyDetailComponent } from './property/property-detail/property-detail.component';
@@ -34,36 +34,31 @@ const appRoutes: Routes = [
   { path: '**', component: PropertyListComponent } // ** acts as a fallback route that will be navigated to when no other route is matched
 ]
 
-@NgModule({
-  declarations: [	
-    AppComponent,
-    PropertyCardComponent,
-    PropertyListComponent,
-    NavBarComponent,
-    AddPropertyComponent,
-    PropertyDetailComponent,
-    UserLoginComponent,
-    UserRegisterComponent,
-    DropdownComponent
-   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    RouterModule.forRoot(appRoutes),
-    FormsModule,
-    ReactiveFormsModule,
-    TabsModule.forRoot(),
-    ButtonsModule.forRoot()
-    // BrowserAnimationsModule,
-    // BsDropdownModule.forRoot()
+@NgModule({ declarations: [
+        AppComponent,
+        PropertyCardComponent,
+        PropertyListComponent,
+        NavBarComponent,
+        AddPropertyComponent,
+        PropertyDetailComponent,
+        UserLoginComponent,
+        UserRegisterComponent,
+        DropdownComponent
     ],
-  providers: [
-    HousingDataService,
-    UserStorageService,
-    AlertifyService,
-    AuthService
-  ],
-  bootstrap: [AppComponent]
-})
+    bootstrap: [AppComponent], imports: [BrowserModule,
+        AppRoutingModule,
+        RouterModule.forRoot(appRoutes),
+        FormsModule,
+        ReactiveFormsModule,
+        TabsModule.forRoot(),
+        ButtonsModule.forRoot()
+        // BrowserAnimationsModule,
+        // BsDropdownModule.forRoot()
+    ], providers: [
+        HousingDataService,
+        UserStorageService,
+        AlertifyService,
+        AuthService,
+        provideHttpClient(withInterceptorsFromDi())
+    ] })
 export class AppModule { }
