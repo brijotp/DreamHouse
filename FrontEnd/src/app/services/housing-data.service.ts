@@ -4,6 +4,7 @@ import { Observable, map } from 'rxjs';
 import { IProperty } from '../model/iproperty';
 import { Property } from '../model/property';
 import { User } from '../model/user';
+import { IPropertyBase } from '../model/ipropertyBase';
 
 @Injectable({
   providedIn: 'root',
@@ -33,6 +34,46 @@ export class HousingDataService {
             console.log(data);
             console.log(id);
             console.log(data[id]);
+          }
+        }
+        return propertiesArray;
+      })
+    );
+  }
+
+  getProperty(id: number) {
+    return this.getAllProperties().pipe(
+      map(propertiesArray => {
+        return propertiesArray.find(p => p.Id === id) as Property | undefined;
+      })
+    );
+  }
+
+  getAllProperties(Purpose?: number): Observable<IPropertyBase[]> {
+    return this.http.get('data/properties.json').pipe(
+      map((data: any) => {
+        const propertiesArray: Array<IPropertyBase> = [];
+        const localProperties = JSON.parse(localStorage.getItem('newProp') || '{}');
+  
+        if (localProperties) {
+          for (const id in localProperties) {
+            if (Purpose) {
+              if (localProperties.hasOwnProperty(id) && localProperties[id].Purpose === Purpose) {
+                propertiesArray.push(localProperties[id]);
+              }
+            } else {
+              propertiesArray.push(localProperties[id]);
+            }
+          }
+        }
+  
+        for (const id in data) {
+          if (Purpose) {
+            if (data.hasOwnProperty(id) && data[id].Purpose === Purpose) {
+              propertiesArray.push(data[id]);
+            }
+          } else {
+            propertiesArray.push(data[id]);
           }
         }
         return propertiesArray;
