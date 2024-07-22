@@ -135,10 +135,10 @@ export class PropertyDetailComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.propertyId = +this.route.snapshot.params['id'];
+    this.propertyId = +this.route.snapshot.params['Id'];
 
     this.route.params.subscribe(params => {
-      this.propertyId = +params['id'];
+      this.propertyId = +params['Id'];
       this.housingService.getProperty(this.propertyId).subscribe(
         (data: Property | undefined) => {
           if (data) {
